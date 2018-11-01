@@ -1,0 +1,26 @@
+version: v1.0
+name: Example
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Tests"
+    task:
+			prologue:
+				commands:
+					- npm install
+      jobs:
+				- name: Firefox
+					commands:
+						- node example.js
+					env_vars:
+						- name: SELENIUM_BROWSER
+							value: firefox
+				- name: Chrome
+					commands:
+						- node example.js
+					env_vars:
+						- name: SELENIUM_BROWSER
+							value: chrome
