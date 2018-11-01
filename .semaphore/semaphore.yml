@@ -8,19 +8,20 @@ agent:
 blocks:
   - name: "Tests"
     task:
-			prologue:
-				commands:
-					- npm install
+      prologue:
+        commands:
+          - checkout
+          - npm install
       jobs:
-				- name: Firefox
-					commands:
-						- node example.js
-					env_vars:
-						- name: SELENIUM_BROWSER
-							value: firefox
-				- name: Chrome
-					commands:
-						- node example.js
-					env_vars:
-						- name: SELENIUM_BROWSER
-							value: chrome
+        - name: Firefox
+          commands:
+            - node example.js
+          env_vars:
+            - name: SELENIUM_BROWSER
+              value: firefox
+        - name: Chrome
+          commands:
+            - node example.js
+          env_vars:
+            - name: SELENIUM_BROWSER
+              value: chrome
